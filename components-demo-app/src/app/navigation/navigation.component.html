@@ -1,4 +1,5 @@
 <div id="nav">
+    <h3>{{ titleFromApp }}</h3>
     <span *ngIf="toggle">SHOW</span>
     <span *ngIf="!toggle">HIDE</span>
     <span>{{ toggle ? "SHOW" : "HIDE" }}</span>
@@ -7,8 +8,17 @@
             <li *ngFor="let user of activeUsers"> {{ user.name + ': ' + user.age }}</li>
         </ul>
     </span>
+
+    <ul>
+        <li *ngFor="let user of activeUsers">
+            <span [class.green]="user.age == true" [class.red]="user.age != true">{{ user.name + ': ' + user.age
+                }}</span>
+            <span [style.color]="user.age == false ? 'red' : 'green'">{{ user.name + ': ' + user.age }}</span>
+        </li>
+    </ul>
     <span *ngIf="!isActive">
         <div>Nothing is active</div>
     </span>
-    <button (click)="handleClick()">Click me</button>
+    <input [value]="inputValue" type="text">
+    <button (click)="handleClick($event)">Click me</button>
 </div>

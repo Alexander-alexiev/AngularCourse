@@ -1,2 +1,4 @@
-<app-navigation />
-<div>{{ title }}</div>
+<app-navigation 
+[title]="title" 
+[activeUsers]="users"
+(onChildOutput)="outputChildHandler()"/>
