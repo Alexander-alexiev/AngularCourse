@@ -1,0 +1,14 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { User } from 'src/Types/User';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class UserService {
+  constructor(private http: HttpClient) {}
+
+  fetchUsers() {
+    return this.http.get<User[]>('https://jsonplaceholder.typicode.com/users');
+  }
+}
