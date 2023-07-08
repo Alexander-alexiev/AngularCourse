@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { UserListComponent } from './user-list/user-list.component';
 import { RouterModule } from '@angular/router';
 import { UserDetailComponent } from './user-detail/user-detail.component';
+import { UserResolver } from './user-detail/user-detail.resolver';
+import { AuthGuard } from './user-detail/user-detail.guard';
 
 @NgModule({
   declarations: [UserListComponent, UserDetailComponent],
@@ -10,7 +12,7 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
     CommonModule,
     RouterModule.forChild([
       { path: 'user/list', component: UserListComponent },
-      { path: 'user/detail/:id', component: UserDetailComponent },
+      { path: 'user/detail/:id', resolve: {user: UserResolver}, canActivate: [AuthGuard],component: UserDetailComponent },
   ]),
   ],
   exports: [UserListComponent],
