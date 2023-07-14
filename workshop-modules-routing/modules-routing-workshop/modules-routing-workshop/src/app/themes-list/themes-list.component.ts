@@ -1,18 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Theme } from 'src/types/theme';
+import { UserService } from '../user/user.service';
 
 @Component({
   selector: 'app-themes-list',
   templateUrl: './themes-list.component.html',
-  styleUrls: ['./themes-list.component.css']
+  styleUrls: ['./themes-list.component.css'],
 })
-export class ThemesListComponent implements OnInit{
+export class ThemesListComponent implements OnInit {
   themesList: Theme[] = [];
   isLoading: boolean = true;
 
-  constructor(private apiService: ApiService){
+  constructor(
+    private apiService: ApiService,
+    private userService: UserService
+  ) {}
 
+  get isLogged(): boolean{
+    return this.userService.isLogged;
   }
 
   ngOnInit(): void {
@@ -24,7 +30,7 @@ export class ThemesListComponent implements OnInit{
       error: (err) => {
         this.isLoading = false;
         console.error(`Error: ${err}`);
-      }
+      },
     });
   }
 }
