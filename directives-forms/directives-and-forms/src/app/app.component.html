@@ -2,29 +2,5 @@
   <div appMyRouterLink="/login">Link to login</div>
   <div appMyRouterLink="/register">Link to register</div>
 </nav>
+<hr/>
 <router-outlet />
-
-<hr />
-<!-- Structural directives are always with * prefix -->
-<div *ngIf="true">Simple div 1</div>
-
-<!-- The * prefix refers to ng-template -->
-<ng-template [ngIf]="true">
-  <div>Simple div 2</div>
-</ng-template>
-
-<!-- Custom structural directive -->
-<button (click)="toggle()">Toggle my state</button>
-<div *appMyStructural="isShown">Structural Directives (usage 1)</div>
-
-<!-- Usage 2 -->
-<ng-template [appMyStructural]="isShown" let-value="value" let-val>
-  <div>Structural Directive 2</div>
-  <h4>{{ value }} : {{ val }}</h4>
-</ng-template>
-<!-- Usage 3 -->
-<ng-template #tmp>
-  <div>Structural Directives (usage 3)</div>
-</ng-template>
-
-<ng-container [appMyStructural]="isShown" [myTmpProp]="tmp" />

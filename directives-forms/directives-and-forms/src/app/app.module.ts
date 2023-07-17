@@ -9,6 +9,9 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { MyRouterLinkDirective } from './my-router-link.directive';
 import { MyStructuralDirective } from './my-structural.directive';
+import { PlaygroundComponent } from './playground/playground.component';
+import { FormsModule } from '@angular/forms';
+import { MaxCountDirective } from './max-count.directive';
 
 @NgModule({
   declarations: [
@@ -18,11 +21,14 @@ import { MyStructuralDirective } from './my-structural.directive';
     LoginComponent,
     RegisterComponent,
     MyRouterLinkDirective,
-    MyStructuralDirective
+    MyStructuralDirective,
+    PlaygroundComponent,
+    MaxCountDirective
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule // Template Driven Form
   ],
   providers: [],
   bootstrap: [AppComponent]
