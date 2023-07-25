@@ -28,12 +28,18 @@ export class AppComponent implements OnInit{
   time$ = interval(1000).pipe(map(() => new Date()));
 
   ngOnInit(): void {
-    this.userService.loadUsers().subscribe({
-      next: console.log,
-      error: (err) => {
-        console.error(`Error from app: ${err}`)
-      }
-    });
+    // this.userService.loadUsers().subscribe({
+    //   next: console.log,
+    //   error: (err) => {
+    //     console.error(`Error from app: ${err}`)
+    //   }
+    // });
+  }
+
+  users$ = this.userService.userObs$;
+
+  reloadUsers(): void{
+    this.userService.loadUsers();
   }
 
 }
