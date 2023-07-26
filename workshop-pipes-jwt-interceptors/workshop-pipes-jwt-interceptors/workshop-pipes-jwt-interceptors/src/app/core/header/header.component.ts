@@ -5,21 +5,27 @@ import { UserService } from 'src/app/user/user.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
- constructor(private userService: UserService, private router: Router){}
+  constructor(private userService: UserService, private router: Router) {}
 
-  get isLoggedIn():boolean{
+  get isLoggedIn(): boolean {
     return this.userService.isLogged;
   }
 
-  get firstName():string {
-    return this.userService.user?.firstName || '';
+  get username(): string {
+    return this.userService.user?.username || '';
   }
 
-  logout():void {
-    this.userService.logout();
-    this.router.navigate(['/']);
+  logout(): void {
+    this.userService.logout().subscribe({
+      next: () => {
+        this.router.navigate(['/login']);
+      },
+      error: () => {
+        this.router.navigate(['/login']);
+      },
+    });
   }
 }

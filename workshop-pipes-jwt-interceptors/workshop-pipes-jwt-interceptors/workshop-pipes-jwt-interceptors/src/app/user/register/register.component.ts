@@ -25,7 +25,7 @@ export class RegisterComponent {
         rePassword: ['', [Validators.required]],
       },
       {
-        validators: [matchPasswordsValidator('password', 'repeatpassword')],
+        validators: [matchPasswordsValidator('password', 'rePassword')],
       }
     ),
   });
@@ -48,7 +48,7 @@ export class RegisterComponent {
     this.userService
       .register(username!, email!, password!, rePassword!, tel!)
       .subscribe(() => {
-        this.router.navigate(['/login']);
+        this.router.navigate(['/themes']);
       });
   }
 }
