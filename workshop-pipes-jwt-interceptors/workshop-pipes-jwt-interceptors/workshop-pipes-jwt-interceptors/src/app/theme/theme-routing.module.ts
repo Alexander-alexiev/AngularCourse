@@ -13,7 +13,11 @@ const routes: Routes = [
       { path: ':themeId', component: CurrentThemeComponent },
     ],
   },
-  { path: 'add-theme', component: NewThemeComponent, canActivate: [AuthActivate] },
+  {
+    path: 'add-theme',
+    component: NewThemeComponent,
+    canActivate: [AuthActivate],
+  },
 ];
 
 @NgModule({

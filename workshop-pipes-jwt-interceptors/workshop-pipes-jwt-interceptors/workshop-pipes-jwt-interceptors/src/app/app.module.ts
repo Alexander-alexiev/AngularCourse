@@ -10,10 +10,11 @@ import { MainComponent } from './main/main.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { HomeComponent } from './home/home.component';
-import { UserModule } from './user/user.module';
 import { ThemeModule } from './theme/theme.module';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { appInterceptorProvider } from './app.interceptor';
+import { AuthenticateComponent } from './authenticate/authenticate.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,9 @@ import { appInterceptorProvider } from './app.interceptor';
     PostsListComponent,
     MainComponent,
     HomeComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    AuthenticateComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,6 @@ import { appInterceptorProvider } from './app.interceptor';
     CoreModule,
     HttpClientModule,
     SharedModule,
-    UserModule,
     ThemeModule,
   ],
   providers: [appInterceptorProvider],

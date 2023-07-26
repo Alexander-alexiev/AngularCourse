@@ -7,21 +7,21 @@ import { User } from 'src/types/user';
 @Injectable({
   providedIn: 'root',
 })
-export class UserService implements OnDestroy{
+export class UserService implements OnDestroy {
   private user$$ = new BehaviorSubject<User | undefined>(undefined);
 
   user$ = this.user$$.asObservable();
 
   user: User | undefined;
   USER_KEY = '[user]';
-  
+
   get isLogged(): boolean {
     return !!this.user;
   }
 
   subscription: Subscription;
 
-  constructor(private http: HttpClient)  {
+  constructor(private http: HttpClient) {
     // try {
     //   const lsUser = localStorage.getItem(this.USER_KEY) || '';
     //   this.user = JSON.parse(lsUser);
@@ -70,8 +70,14 @@ export class UserService implements OnDestroy{
     // this.user = undefined;
     // localStorage.removeItem(this.USER_KEY);
     return this.http
-      .post<User>('/api/login', {})
-      .pipe(tap((user) => this.user$$.next(undefined)));
+      .post<User>('/api/logout', {})
+      .pipe(tap(() => this.user$$.next(undefined)));
+  }
+
+  getProfile() {
+    return this.http
+      .get<User>('/api/users/profile')
+      .pipe(tap((user) => this.user$$.next(user)));
   }
 
   ngOnDestroy(): void {
