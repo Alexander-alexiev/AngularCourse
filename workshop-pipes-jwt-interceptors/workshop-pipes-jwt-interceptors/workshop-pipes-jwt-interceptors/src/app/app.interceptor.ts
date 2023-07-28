@@ -10,7 +10,6 @@ import { Router } from '@angular/router';
 import { Observable, catchError } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { ErrorService } from './core/error/error.service';
-import { UntypedFormArray } from '@angular/forms';
 
 const { apiUrl } = environment;
 @Injectable()
