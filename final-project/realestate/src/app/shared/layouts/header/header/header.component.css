@@ -73,3 +73,7 @@ nav {
     border-left: 1px solid lightgrey;
     padding-left: .5em;
 }
+.image{
+    display: flex;
+    height: 140px;
+}
