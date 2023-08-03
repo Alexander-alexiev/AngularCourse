@@ -1,0 +1,22 @@
+<div class="container-fluid">
+    <div class="welcome">
+        <h3>Welcome!</h3>
+        <p>Real Estate is the best place to look for your dream</p>
+        <div class="logged">
+            <ul > <!--*ngIf="!isLogged"-->
+                <li>
+                    <a routerLink="/auth/login" class="btn btn-primary">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Login
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/auth/register" class="btn btn-primary">
+                        <i class="fas fa-user-plus"></i>
+                        Register
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>        
+</div>
